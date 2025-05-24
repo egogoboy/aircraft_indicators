@@ -9,10 +9,10 @@ class AttitudeIndicator:
         self.ax.axis('off')
         self.radius = 1
 
-        self.clip_circle = patches.Circle((0.5, 0.5), 0.48, transform=self.ax.transAxes)
+        self.clip_circle = patches.Circle((0.5, 0.5), 0.45, transform=self.ax.transAxes)
 
         # Draw frame
-        border = patches.Circle((0.5, 0.5), 0.48, transform=self.ax.transAxes,
+        border = patches.Circle((0.5, 0.5), 0.45, transform=self.ax.transAxes,
                                 facecolor='none', edgecolor='gray', linewidth=2)
         self.ax.add_patch(border)
 
@@ -64,9 +64,9 @@ class AttitudeIndicator:
             y = np.cos(rad) * self.radius
 
             if angle % 30 != 0 and angle != 0:
-                self.ax.plot([x * 0.95, x], [y * 0.95 - 0.1, y - 0.1], 'black', linewidth=1)
+                self.ax.plot([x * 0.95, x], [y * 0.95 - 0.15, y - 0.15], 'black', linewidth=1)
                 self.roll_labels.append(
-                        self.ax.text(x * 0.95 + angle * 0.0022, y - np.abs(angle) * 0.001, f"{abs(angle)}", va='center', ha='center',
+                        self.ax.text(x * 0.95 + angle * 0.0022, y - np.abs(angle) * 0.001 - 0.05, f"{abs(angle)}", va='center', ha='center',
                                      fontsize=8, color='black', rotation=-angle, clip_path=self.clip_circle)
                 )
             else:
@@ -75,7 +75,7 @@ class AttitudeIndicator:
 
         # Roll pointer
         self.roll_pointer = patches.RegularPolygon(
-            (0, self.radius + 0.1), numVertices=3, radius=0.04,
+            (0, self.radius), numVertices=3, radius=0.04,
             orientation=np.radians(180), color='red', zorder=10
         )
         self.ax.add_patch(self.roll_pointer)
