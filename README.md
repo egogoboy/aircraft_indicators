@@ -1,5 +1,9 @@
 # Aircraft Indicators on Matplotlib
 
+## Preview
+![Screen Recording 2025-05-24 at 6 14 16 PM](https://github.com/user-attachments/assets/c0dd9007-74d5-4c2a-b3cd-f572f3ef3c3a)
+*gif with all indicators*
+
 ## Instalation
 In root run
 ``` bash
